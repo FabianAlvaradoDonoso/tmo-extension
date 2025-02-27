@@ -124,8 +124,10 @@ function setupChapterNavigation() {
         }
         break
 
-      case 'h':
-      case 'H':
+      case 'v':
+      case 'V':
+      case 'b':
+      case 'B':
         if (buttonHome) {
           buttonHome.click()
         }
@@ -134,7 +136,40 @@ function setupChapterNavigation() {
   })
 }
 
+function insertInstructions() {
+  const headerManga = document.querySelector('h4.no-margin')
+  const footerManga = document.querySelector(
+    '#app > section:nth-child(6) > div'
+  )
+  const instructionsHTML =
+    "<span style='font-weight: normal;'><kbd>←</kbd> Capítulo anterior | <kbd>v</kbd> ó <kbd>b</kbd> para Volver | Capítulo siguiente <kbd>→</kbd></span>"
+
+  const commonStyles = {
+    fontSize: '1.5em',
+    color: '#fff',
+    paddingTop: '8px',
+    textAlign: 'center'
+  }
+
+  if (headerManga) {
+    const topH4 = document.createElement('h4')
+    topH4.innerHTML = instructionsHTML
+    topH4.classList.add('no-margin')
+    Object.assign(topH4.style, commonStyles)
+    headerManga.insertAdjacentElement('afterend', topH4)
+  }
+
+  if (footerManga) {
+    const bottomH4 = document.createElement('h4')
+    bottomH4.innerHTML = instructionsHTML
+    bottomH4.classList.add('no-margin', 'footer-instructions')
+    Object.assign(bottomH4.style, commonStyles)
+    footerManga.insertAdjacentElement('beforebegin', bottomH4)
+  }
+}
+
 ;(function main() {
   addNextChaperButton()
   setupChapterNavigation()
+  insertInstructions()
 })()
