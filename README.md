@@ -12,6 +12,7 @@ TMO Next Chapter es una extensión para Chrome que mejora tu experiencia de lect
 - 🎯 Detecta automáticamente el siguiente capítulo no leído
 - 🚀 Abre el capítulo en una nueva pestaña
 - 💡 Si todos los capítulos están marcados como leídos, te permite volver al último capítulo
+- 👉🏻 Navegación entre capítulos, siguiente capitulo, anterior capitulo o volver al indice
 
 ### Instalación
 
@@ -32,6 +33,7 @@ TMO Next Chapter is a Chrome extension that enhances your reading experience on 
 - 🎯 Automatically detects the next unread chapter
 - 🚀 Opens the chapter in a new tab
 - 💡 If all chapters are marked as read, allows you to return to the last chapter
+- 👉🏻 Navigation between chapters, next chapter, previous chapter or return to the index
 
 ### Installation
 
