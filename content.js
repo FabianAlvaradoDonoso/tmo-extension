@@ -99,8 +99,8 @@ function addNextChaperButton() {
 }
 
 function setupChapterNavigation() {
-  const buttonNextChapter = document.querySelector('.chapter-next')
-  const buttonPrevChapter = document.querySelector('.chapter-prev')
+  const buttonNextChapter = document.querySelector('.chapter-next a')
+  const buttonPrevChapter = document.querySelector('.chapter-prev a')
   const buttonHome = document.querySelector("a[title='Volver']")
   const buttonGoToNextChapter = document.querySelector('#goToNextChapter')
 
@@ -110,10 +110,7 @@ function setupChapterNavigation() {
     switch (key) {
       case 'ArrowRight':
         if (buttonNextChapter) {
-          const tagANext = buttonNextChapter.querySelector('a')
-          if (tagANext) {
-            tagANext.click()
-          }
+          buttonNextChapter.click()
         } else if (buttonHome) {
           buttonHome.click()
         } else if (buttonGoToNextChapter) {
@@ -123,10 +120,7 @@ function setupChapterNavigation() {
 
       case 'ArrowLeft':
         if (buttonPrevChapter) {
-          const tagAPrev = buttonPrevChapter.querySelector('a')
-          if (tagAPrev) {
-            tagAPrev.click()
-          }
+          buttonPrevChapter.click()
         }
         break
 
