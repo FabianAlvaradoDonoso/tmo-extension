@@ -1,11 +1,9 @@
-;(function removeSocialSideBar() {
-  // Buscamos el contenedor con id "chapters"
-  const title = 'TMO Extension:'
+function addNextChaperButton() {
+  const inChapters = document.querySelector('#chapters')
 
-  const chapters = document.querySelector('#chapters')
-  if (!chapters) {
-    console.log(title, 'No se encontró el div con id "chapters".')
-  } else {
+  if (inChapters) {
+    // Buscamos el contenedor con id "chapters"
+    const title = 'TMO Extension:'
     // Dentro de chapters, buscamos el primer <ul>
     const uls = chapters.querySelectorAll('.upload-link')
 
@@ -77,6 +75,7 @@
 
           const nuevoBoton = document.createElement('button')
           nuevoBoton.textContent = ` ${textContext}`
+          nuevoBoton.id = 'goToNextChapter'
           nuevoBoton.classList.add('btn', 'btn-primary', 'btn-lg', 'btn-block')
           nuevoBoton.addEventListener('click', () => {
             window.open(finalA.href, '_blank')
@@ -97,4 +96,51 @@
       }
     }
   }
+}
+
+function setupChapterNavigation() {
+  const buttonNextChapter = document.querySelector('.chapter-next')
+  const buttonPrevChapter = document.querySelector('.chapter-prev')
+  const buttonHome = document.querySelector("a[title='Volver']")
+  const buttonGoToNextChapter = document.querySelector('#goToNextChapter')
+
+  document.addEventListener('keydown', (event) => {
+    const { key } = event
+
+    switch (key) {
+      case 'ArrowRight':
+        if (buttonNextChapter) {
+          const tagANext = buttonNextChapter.querySelector('a')
+          if (tagANext) {
+            tagANext.click()
+          }
+        } else if (buttonHome) {
+          buttonHome.click()
+        } else if (buttonGoToNextChapter) {
+          buttonGoToNextChapter.click()
+        }
+        break
+
+      case 'ArrowLeft':
+        if (buttonPrevChapter) {
+          const tagAPrev = buttonPrevChapter.querySelector('a')
+          if (tagAPrev) {
+            tagAPrev.click()
+          }
+        }
+        break
+
+      case 'h':
+      case 'H':
+        if (buttonHome) {
+          buttonHome.click()
+        }
+        break
+    }
+  })
+}
+
+;(function main() {
+  addNextChaperButton()
+  setupChapterNavigation()
 })()
